@@ -2,6 +2,7 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import java.util.Scanner;
 
 /**
@@ -38,11 +39,12 @@ public class TechJobs {
                 String columnChoice = getUserSelection("List", columnChoices);
 
                 if (columnChoice.equals("all")) {
-                    printJobs(JobData.findAll());
+                    printJobs(JobData.findAll());  //passing all the info from table to function printJobs...I think
+
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
-
+//prints out if 1-list is chosen and postion type, employer, location or skill is chosen (not for 0 - All though)
                     System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
 
                     // Print list of skills, employers, etc
@@ -50,7 +52,7 @@ public class TechJobs {
                         System.out.println(item);
                     }
                 }
-
+// choice is 'search'
             } else { // choice is "search"
 
                 // How does the user want to search (e.g. by skill or employer)
@@ -88,7 +90,7 @@ public class TechJobs {
 
             System.out.println("\n" + menuHeader);
 
-            // Print available choices
+            // Print available choices ****This prints the list of choices 0 - All 1 - Position Type etc****
             for (Integer j = 0; j < choiceKeys.length; j++) {
                 System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
             }
@@ -111,6 +113,22 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        //TODO If there are no results, print message "No Results Found"
+        ArrayList<HashMap<String, String>> allJobs = JobData.findAll();
+
+// Pseudo code: for each job in jobs, iterate over each column of info (iterate over an arraylist made up of hashmaps
+//Do I need to create a new HashMap and ArrayList with the JobData?
+
+        for (HashMap<String, String> job : someJobs) {
+        System.out.println("\n*****");
+            for(String key : HashMap.keySet()) {
+                String value = HashMap.get(key);
+                System.out.println( key + " : " + value );
+            }
+        System.out.println("*****");                   //may be able to do this with do while..or is it while, that checks loop at end
+        }
+
+
+
     }
 }
