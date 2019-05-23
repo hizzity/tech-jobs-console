@@ -39,7 +39,7 @@ public class TechJobs {
                 String columnChoice = getUserSelection("List", columnChoices);
 
                 if (columnChoice.equals("all")) {
-                    printJobs(JobData.findAll());  //passing all the info from table to function printJobs...I think
+                    printJobs(JobData.findAll());  //passing all the info from table to function printJobs...I think, should I pass columnChoice okay
 
                 } else {
 
@@ -114,21 +114,20 @@ public class TechJobs {
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
         //TODO If there are no results, print message "No Results Found"
-        ArrayList<HashMap<String, String>> allJobs = JobData.findAll();
+
 
 // Pseudo code: for each job in jobs, iterate over each column of info (iterate over an arraylist made up of hashmaps
 //Do I need to create a new HashMap and ArrayList with the JobData?
-
+//        HashMap<String, String> someJobs = new HashMap<>();
+        if (someJobs.size() > 0);
         for (HashMap<String, String> job : someJobs) {
         System.out.println("\n*****");
-            for(String key : HashMap.keySet()) {
-                String value = HashMap.get(key);
+            for(String key : job.keySet()) {
+                String value = job.get(key);
                 System.out.println( key + " : " + value );
             }
         System.out.println("*****");                   //may be able to do this with do while..or is it while, that checks loop at end
         }
-
-
 
     }
 }
