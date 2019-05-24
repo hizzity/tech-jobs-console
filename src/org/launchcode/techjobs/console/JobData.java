@@ -128,6 +128,7 @@ public class JobData {
     // The key is the column name and VALUE is the correspoding row
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
+        value=value.toLowerCase();
         // load data if not already loaded
         loadData();
 
@@ -135,9 +136,9 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
             for (String key : row.keySet()) {
-                if(row.get(key).contains(value)){
+                if(row.get(key).toLowerCase().contains(value)){
                     jobs.add(row);
-
+                break;
                 }
 
 

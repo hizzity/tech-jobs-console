@@ -12,7 +12,7 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -63,7 +63,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    findByValue(JobData.findByValue(searchField));
+                    printJobs(JobData.findByValue(searchField));
                     //System.out.println("Search all fields not yet implemented.");          //findByValue GOES HERE!!!!!!!!!!!!!!
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
@@ -106,7 +106,7 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
@@ -129,6 +129,8 @@ public class TechJobs {
                 }
                 System.out.println("*****");                   //may be able to do this with do while..or is it while, that checks loop at end
             }
-        }else{System.out.println("No Jobs Found");
+        } else {
+            System.out.println("No Jobs Found");
+        }
     }
 }
