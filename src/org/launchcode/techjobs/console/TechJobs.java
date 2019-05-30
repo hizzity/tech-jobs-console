@@ -44,7 +44,7 @@ public class TechJobs {
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
-//prints out if 1-list is chosen and postion type, employer, location or skill is chosen (not for 0 - All though)
+//prints out if 1-list is chosen and position type, employer, location or skill is chosen
                     System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
 
                     // Print list of skills, employers, etc
@@ -66,7 +66,7 @@ public class TechJobs {
                     printJobs(JobData.findByValue(searchField));
                     //System.out.println("Search all fields not yet implemented.");          //findByValue GOES HERE!!!!!!!!!!!!!!
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));     //TODO need to apply lowercase change to this also?!
                 }
             }
         }
@@ -114,12 +114,8 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        //TODO If there are no results, print message "No Results Found"
-
-
 // Pseudo code: for each job in jobs, iterate over each column of info (iterate over an arraylist made up of hashmaps
-//Do I need to create a new HashMap and ArrayList with the JobData?
-//        HashMap<String, String> someJobs = new HashMap<>();
+
         if (someJobs.size() > 0) {
             for (HashMap<String, String> job : someJobs) {
                 System.out.println("\n*****");
