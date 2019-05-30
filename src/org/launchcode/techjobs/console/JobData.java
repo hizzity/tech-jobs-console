@@ -70,13 +70,15 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            String loweraValue = aValue.toLowerCase();
 
-            if (aValue.contains(value)) {
+            if (loweraValue.contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -128,9 +130,10 @@ public class JobData {
     // The key is the column name and VALUE is the correspoding row
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
-        String lowerValue=value.toLowerCase();
         // load data if not already loaded
         loadData();
+
+        String lowerValue=value.toLowerCase();
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
